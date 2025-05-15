@@ -1,0 +1,8 @@
+@model WeatherApp.Models.WeatherResponse
+
+<h2>Weather in @Model.Location.Name (@Model.Location.Country)</h2>
+
+<p>Temperature: @Model.Current.Temp_C ℃</p>
+<p>Weather: @Model.Current.Condition.Text</p>
+<img src="https:@Model.Current.Condition.Icon" alt="icon" />
+<a href="/Weather/Index">Back</a>
