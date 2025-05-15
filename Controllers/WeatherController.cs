@@ -9,11 +9,13 @@ namespace WeatherApp.Controllers
   {
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly IConfiguration _config;
+    private readonly ILogger<WeatherController> _logger;
 
-    public WeatherController(IHttpClientFactory httpClientFactory, IConfiguration config)
+    public WeatherController(IHttpClientFactory httpClientFactory, IConfiguration config, ILogger<WeatherController> logger)
     {
       _httpClientFactory = httpClientFactory;
       _config = config;
+      _logger = logger;
     }
 
     public IActionResult Index()
@@ -24,9 +26,11 @@ namespace WeatherApp.Controllers
     [HttpPost]
     public async Task<IActionResult> Result(string city)
     {
-      var apiKey = _config["WeatherApi:ApiKey"];
-      var baseUrl = _config["WeatherApi:BaseUrl"];
+      var apiKey = _config["WEATHER_API_KEY"];
+      var baseUrl = "https://api.weatherapi.com/v1/";
       var url = $"{baseUrl}current.json?key={apiKey}&q={city}&aqi=no";
+
+      // _logger.LogInformation("Requesting weather data from: {Url}", url.Replace(apiKey, "***"));
 
       var client = _httpClientFactory.CreateClient();
       var response = await client.GetAsync(url);

@@ -7,4 +7,8 @@
     <UserSecretsId>a8e6ee58-a4bc-4b5c-b857-2d908b9c44f2</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.Extensions" Version="9.0.5" />
+  </ItemGroup>
+
 </Project>

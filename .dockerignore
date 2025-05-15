@@ -1,0 +1,8 @@
+bin/
+obj/
+*.user
+*.csproj.user
+.vscode/
+.env
+.git
+.gitignore
